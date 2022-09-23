@@ -7,7 +7,7 @@
 #  you may not use this file except in compliance with the License.
 #  You may obtain a copy of the License at
 #
-#    http://www.apache.org/licenses/LICENSE-2.0
+#	http://www.apache.org/licenses/LICENSE-2.0
 #
 #  Unless required by applicable law or agreed to in writing, software
 #  distributed under the License is distributed on an "AS IS" BASIS,
@@ -27,8 +27,8 @@ source $_SCRIPTDIR/common-files/termux_download.sh
 : ${_TMP_DIR:=$_SCRIPTDIR/tmp}
 : ${_API_LEVEL:=21}
 : ${_MAKE_PROCESSES:=$(nproc)}
-: ${GCC_VERSION:=12.1.0}
-: ${GCC_SHA256:=e88a004a14697bbbaba311f38a938c716d9a652fd151aaaa4cf1b5b99b90e2de}
+: ${GCC_VERSION:=12.2.0}
+: ${GCC_SHA256:=ac6b317eb4d25444d87cf29c0d141dedc1323a1833ec9995211b13e1a851261c}
 : ${BINUTILS_VERSION:=2.39}
 : ${BINUTILS_SHA256:=d12ea6f239f1ffe3533ea11ad6e224ffcb89eb5d01bbea589e9158780fa11f10}
 
@@ -114,33 +114,33 @@ export CPPFLAGS="-D__ANDROID_API__=$_API_LEVEL"
 export CXXFLAGS="-D__ANDROID_API__=$_API_LEVEL"
 
 $GCC_SRC_DIR/configure \
-        --host=x86_64-linux-gnu  \
-        --build=x86_64-linux-gnu \
-        --target=$_HOST_PLATFORM \
-        --disable-shared \
-        --disable-nls \
-        --enable-default-pie \
-        --with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' \
-        --with-gnu-as --with-gnu-ld \
-        --disable-libstdc__-v3 \
-        --disable-tls \
-        --disable-ssp \
-        --disable-bootstrap \
-        --enable-initfini-array \
-        --enable-libatomic-ifuncs=no \
-        --prefix=$_TMP_DIR/newer-toolchain \
-        --with-gmp --with-mpfr --with-mpc --with-system-zlib \
-        --enable-languages=c,c++,fortran \
-        --enable-plugins --enable-libgomp \
-        --enable-gnu-indirect-function \
-        --disable-libcilkrts --disable-libsanitizer \
-        --enable-gold --enable-threads \
-        --enable-eh-frame-hdr-for-static \
-        --enable-graphite=yes --with-isl \
-        --disable-multilib \
-        $_GCC_EXTRA_HOST_BUILD \
-        --with-sysroot=$_TMP_DIR/newer-toolchain/sysroot \
-        --with-gxx-include-dir=$_TMP_DIR/newer-toolchain/include/c++/$GCC_VERSION
+		--host=x86_64-linux-gnu  \
+		--build=x86_64-linux-gnu \
+		--target=$_HOST_PLATFORM \
+		--disable-shared \
+		--disable-nls \
+		--enable-default-pie \
+		--with-host-libstdcxx='-static-libgcc -Wl,-Bstatic,-lstdc++,-Bdynamic -lm' \
+		--with-gnu-as --with-gnu-ld \
+		--disable-libstdc__-v3 \
+		--disable-tls \
+		--disable-ssp \
+		--disable-bootstrap \
+		--enable-initfini-array \
+		--enable-libatomic-ifuncs=no \
+		--prefix=$_TMP_DIR/newer-toolchain \
+		--with-gmp --with-mpfr --with-mpc --with-system-zlib \
+		--enable-languages=c,c++,fortran \
+		--enable-plugins --enable-libgomp \
+		--enable-gnu-indirect-function \
+		--disable-libcilkrts --disable-libsanitizer \
+		--enable-gold --enable-threads \
+		--enable-eh-frame-hdr-for-static \
+		--enable-graphite=yes --with-isl \
+		--disable-multilib \
+		$_GCC_EXTRA_HOST_BUILD \
+		--with-sysroot=$_TMP_DIR/newer-toolchain/sysroot \
+		--with-gxx-include-dir=$_TMP_DIR/newer-toolchain/include/c++/$GCC_VERSION
 
 make -j $_MAKE_PROCESSES
 make -j $_MAKE_PROCESSES install-strip
