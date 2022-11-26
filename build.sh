@@ -42,13 +42,13 @@ mkdir -p $_TMP_DIR
 _HOST_PLATFORM="${TOOLCHAIN_ARCH}-linux-android"
 
 _GCC_EXTRA_HOST_BUILD=""
-_BINUTILS_EXTRA_HOST_BUILD="--enable-gold=default"
+_BINUTILS_EXTRA_HOST_BUILD="--enable-gold"
 if [ "$TOOLCHAIN_ARCH" = "arm" ]; then
 	_HOST_PLATFORM="${_HOST_PLATFORM}eabi"
 	_GCC_EXTRA_HOST_BUILD="--with-arch=armv7-a --with-float=soft --with-fpu=vfp"
 elif [ "$TOOLCHAIN_ARCH" = "aarch64" ]; then
 	_GCC_EXTRA_HOST_BUILD="--enable-fix-cortex-a53-835769 --enable-fix-cortex-a53-843419"
-	_BINUTILS_EXTRA_HOST_BUILD="--enable-gold $_GCC_EXTRA_HOST_BUILD"
+	_BINUTILS_EXTRA_HOST_BUILD+=" $_GCC_EXTRA_HOST_BUILD"
 elif [ "$TOOLCHAIN_ARCH" = "i686" ]; then
 	_GCC_EXTRA_HOST_BUILD="--with-arch=i686 --with-fpmath=sse "
 elif [ "$TOOLCHAIN_ARCH" = "x86_64" ]; then
