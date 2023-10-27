@@ -1,0 +1,29 @@
+--- a/gcc/ginclude/float.h
++++ b/gcc/ginclude/float.h
+@@ -25,6 +25,12 @@
+  * ISO C Standard:  5.2.4.2.2  Characteristics of floating types <float.h>
+  */
+ 
++#ifdef _LIBCPP_CFLOAT
++#if __has_include_next(<float.h>)
++#  include_next <float.h>
++#endif
++#endif
++
+ #ifndef _FLOAT_H___
+ #define _FLOAT_H___
+ 
+--- a/gcc/ginclude/stddef.h
++++ b/gcc/ginclude/stddef.h
+@@ -24,6 +24,11 @@
+ /*
+  * ISO C Standard:  7.17  Common definitions  <stddef.h>
+  */
++#ifdef _LIBCPP_CSTDDEF
++#if __has_include_next(<stddef.h>)
++#  include_next <stddef.h>
++#endif
++#endif
+ #if (!defined(_STDDEF_H) && !defined(_STDDEF_H_) && !defined(_ANSI_STDDEF_H) \
+      && !defined(__STDDEF_H__)) \
+     || defined(__need_wchar_t) || defined(__need_size_t) \
