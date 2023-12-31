@@ -91,6 +91,11 @@ popd
 mkdir -p $_TMP_DIR/newer-toolchain
 cp -R $_TMP_DIR/standalone-toolchain/sysroot $_TMP_DIR/newer-toolchain/
 
+# Set CPPFLAGS/CFLAGS/CXXFLAGS
+export CPPFLAGS="-O3 -g0"
+export CFLAGS="$CPPFLAGS"
+export CXXFLAGS="$CPPFLAGS"
+
 # Build binutils
 mkdir -p binutils-build
 pushd binutils-build
@@ -109,9 +114,9 @@ export PATH="$_TMP_DIR/newer-toolchain/bin:$PATH"
 mkdir -p newer-toolchain-build
 pushd newer-toolchain-build
 
-export CFLAGS="-D__ANDROID_API__=$_API_LEVEL"
-export CPPFLAGS="-D__ANDROID_API__=$_API_LEVEL"
-export CXXFLAGS="-D__ANDROID_API__=$_API_LEVEL"
+export CFLAGS+=" -D__ANDROID_API__=$_API_LEVEL"
+export CPPFLAGS+=" -D__ANDROID_API__=$_API_LEVEL"
+export CXXFLAGS+=" -D__ANDROID_API__=$_API_LEVEL"
 
 $GCC_SRC_DIR/configure \
 		--host=x86_64-linux-gnu  \
