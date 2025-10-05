@@ -27,7 +27,7 @@ jobs:
       if: ${{ failure() }}
       uses: mxschmitt/action-tmate@v3
     - name: Upload Build Archive
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: newer-toolchain-${{ matrix.target_arch }}-${{ github.sha }}
         path: ${{ github.workspace }}/build/
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-22.04
     steps:
       - name: Fetch archives
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: ./
       - name: Copy archives
