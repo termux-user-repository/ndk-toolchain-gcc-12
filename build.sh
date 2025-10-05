@@ -63,11 +63,11 @@ sudo apt install -y libgmp-dev libmpfr-dev libmpc-dev zlib1g-dev libisl-dev libt
 pushd $_TMP_DIR
 
 # Download source
-GCC_SRC_URL=https://mirror.kernel.org/gnu/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.gz
+GCC_SRC_URL=https://mirrors.kernel.org/gnu/gcc/gcc-${GCC_VERSION}/gcc-${GCC_VERSION}.tar.gz
 GCC_SRC_FILE=$_CACHE_DIR/gcc-${GCC_VERSION}.tar.gz
 GCC_SRC_DIR=$_TMP_DIR/gcc-${GCC_VERSION}
 termux_download $GCC_SRC_URL $GCC_SRC_FILE $GCC_SHA256
-BINUTILS_SRC_URL=https://mirror.kernel.org/gnu/binutils/binutils-${BINUTILS_VERSION}.tar.gz
+BINUTILS_SRC_URL=https://mirrors.kernel.org/gnu/binutils/binutils-${BINUTILS_VERSION}.tar.gz
 BINUTILS_SRC_FILE=$_CACHE_DIR/binutils-${BINUTILS_VERSION}.tar.gz
 BINUTILS_SRC_DIR=$_TMP_DIR/binutils-${BINUTILS_VERSION}
 termux_download $BINUTILS_SRC_URL $BINUTILS_SRC_FILE $BINUTILS_SHA256
